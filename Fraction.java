@@ -62,8 +62,52 @@ public class Fraction {
         int num = this.getNumerator() * other.getNumerator();
         int denom = this.getDenominator() * other.getDenominator();
         return new Fraction(num, denom);
+		
     }
-
+	
+	//----------------------------------------------------------------------------
+	
+	public Fraction divide(Fraction other) {
+		
+		int num = this.getNumerator() * other.getDenominator();
+		int denom = this.getDenominator() * other.getNumerator();
+		return new Fraction(num, denom);
+		
+	}
+	
+	public Fraction add(Fraction other){
+	
+		//can also works with just the code in else clause 
+		
+		if (this.getDenominator() == other.getDenominator()) {
+			int num = this.getNumerator() + other.getNumerator();
+			int denom = this.getDenominator();
+			return new Fraction(num, denom);
+		} else {
+			int num = (this.getNumerator()*other.getDenominator())+(other.getNumerator()*this.getDenominator());
+			int denom = this.getDenominator()*other.getDenominator();
+			return new Fraction(num, denom);
+		}
+		
+	}
+	
+	public Fraction subtract(Fraction other) {
+	
+		//can also works with just the code in else clause 
+		
+		if (this.getDenominator() == other.getDenominator()) {
+			int num = this.getNumerator() - other.getNumerator();
+			int denom = this.getDenominator();
+			return new Fraction(num, denom);
+		} else {
+			int num = (this.getNumerator()*other.getDenominator())-(other.getNumerator()*this.getDenominator());
+			int denom = this.getDenominator()*other.getDenominator();
+			return new Fraction(num, denom);
+		}
+		
+	}
+	//-----------------------------------------------------------------------------
+	
     private int myGcd(int a, int b) {
         while (b != 0) {
             int t = b;
