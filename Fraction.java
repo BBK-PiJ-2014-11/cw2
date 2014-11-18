@@ -106,6 +106,25 @@ public class Fraction {
 		}
 		
 	}
+	
+	public Fraction negate() {
+	
+		int num = (this.getNumerator() * -1);
+		int denom = this.getDenominator();
+		return new Fraction (num,denom);
+		
+	}
+	
+	public Fraction absValue() {
+	
+		int num = Math.abs(this.getNumerator());
+		int denom = Math.abs(this.getDenominator());
+		return new Fraction(num, denom);
+		
+	}
+	
+
+	
 	//-----------------------------------------------------------------------------
 	
     private int myGcd(int a, int b) {
