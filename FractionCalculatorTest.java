@@ -5,6 +5,7 @@ public class FractionCalculatorTest {
 	private static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		
+		FractionCalculator firstCalculator = new FractionCalculator();
+		firstCalculator.calculate();
 	}
-}gi
+}
