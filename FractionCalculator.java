@@ -20,10 +20,10 @@ public class FractionCalculator {
 		exit = false;
 		errorString = "";
 		userCommand = new String[][]{
-				{"a", "A", "abs"},
-				{"n", "N", "neg"},
-				{"c", "C", "clear"},
-				{"q", "Q", "quit"}
+				{null,"a", "A", "abs"},
+				{null,"n", "N", "neg"},
+				{null,"c",  "C", "clear"},
+				{null,"q", "Q", "quit"}
 		};
 	}
 
@@ -32,25 +32,29 @@ public class FractionCalculator {
 		//needs development
 
 		Fraction totalFraction = new Fraction(0,1);
+		System.out.println("total before loop "+ totalFraction);
 		String[] inputArray = inputString.split("\\s");
 		for (int i = 0; i < inputArray .length; i++) {
 			if (checkOperator(inputArray[i])){
 				getOperator(inputArray[i]);
-				if (operator == 0){
-					totalFraction = reset;
-					clear(totalFraction);
-					System.out.println("After clear tf -- "+ totalFraction);
-					return totalFraction;
-				}
+				//if (operator == 0){
+					//totalFraction = reset;
+					//clear(totalFraction);
+					//System.out.println("After clear tf -- "+ totalFraction);
+					//return totalFraction;
+				//}
 			}else if (checkNumber(inputArray[i])){
 				if(operator == 0) {
 					fraction = fractionBuilder(inputArray [i]);
-					System.out.println("first assignment: "+ fraction);
 				}else{
 					storedFraction = fractionBuilder(inputArray [i]);
-					System.out.println("first assignment: "+ storedFraction);
+					System.out.println("second assignment: "+ storedFraction);
+					System.out.println("total after second assignment "+ totalFraction);
 				}
+				System.out.println("total before "+ totalFraction);
+				System.out.println("fraction before "+ fraction);
 				totalFraction = sum(fraction, storedFraction, operator);
+				System.out.println("total after= : "+ totalFraction);
 			}else if (checkCommand(inputArray [i],userCommand )) {
 				System.out.println("command entered");
 				totalFraction = getCommand(inputArray[i], userCommand, totalFraction);
@@ -110,14 +114,12 @@ public class FractionCalculator {
 		return operator;
 	}
 
+	// simple method to check if first character in string is number or minus sign
 	public boolean checkNumber(String input) {
-		for (int i = 0; i < input.length(); i++) {
-			char number = input.charAt(i);
-			if (!Character.isDigit(number)&& (!Character.isSpaceChar(number ))){
-				return false;
-			}
+		if ((Character.isDigit(input.charAt(0)) || input.charAt(0) == '-')){
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	// constructs fraction using user input and fraction class
@@ -163,7 +165,6 @@ public class FractionCalculator {
 			for (int i = 0; i < command.length; i++) {
 				System.out.println((command.length));
 				for (int j = 1; j < command[i].length; j++) {
-					//System.out.println((command[i][j]));
 					if (input.equals(command[i][j])) {
 						return true;
 					}
@@ -175,9 +176,11 @@ public class FractionCalculator {
 
 	// assigns method bases on user commands
 	public Fraction getCommand(String input,String userCommand [][],Fraction fraction) {
+		Fraction sumFraction = new Fraction(0,1);
 		System.out.println("passed fraction");
 		System.out.println((fraction));
 		for (int i = 0; i < userCommand .length; i++) {
+			/*
 			if (input.equals(userCommand[0])){
 				System.out.println("ABS CAUGHT");
 				System.out.println("FRACTION passed to method: = "+fraction);
@@ -199,34 +202,35 @@ public class FractionCalculator {
 				break;
 			}
 
-			/*
+			*/
 			System.out.println((userCommand[i]));
 			for (int j = 1; j < userCommand[i].length; j++) {
 				System.out.println((userCommand[i][j]));
 				if (input.equals(userCommand[0][j])) {
 					System.out.println("ABS CAUGHT");
 					System.out.println("FRACTION passed to method: = "+fraction);
-					fraction.absValue();
+					sumFraction = fraction.absValue();
 					System.out.println("FRACTION after method: = " + fraction);
-					return fraction;
+					return sumFraction;
 				}else if (input.equals(userCommand[1][j])){
 					System.out.println("NEG CAUGHT");
-					fraction.negate();
-					return fraction;
+					sumFraction = fraction.negate();
+					System.out.println("FRACTION after neg: = " + fraction);
+					return sumFraction ;
 				}else if (input.equals(userCommand[2][j])){
 					System.out.println("CLEAR CAUGHT");
-					fraction = reset;
-					return fraction;
+					sumFraction = reset;
+					return sumFraction;
 				}else{
 					System.out.println("QUIT CAUGHT");
 					exit = true;
 					break;
 				}
-			}*/
+			}
 		}
 		System.out.println("fraction below");
 		System.out.println((fraction));
-		return fraction;
+		return sumFraction;
 	}
 
 	// checks for exit characters
@@ -303,4 +307,11 @@ public class FractionCalculator {
 		System.out.println("");
 	}
 
+	//consider
+	public static void main(String[] args) {
+		FractionCalculator firstCalculator = new FractionCalculator();
+		firstCalculator.calculate();
+	}
+
 }
+
