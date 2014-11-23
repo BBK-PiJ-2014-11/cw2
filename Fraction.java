@@ -1,3 +1,9 @@
+/*
+Ehshan Veerabangsa, eveera01;
+CW2, Programming in Java;
+MSc Computer Science
+ */
+
 /**
  * Created by keith for the second coursework assignment.
  */
@@ -18,13 +24,11 @@ public class Fraction {
 
     @Override
     public String toString() {
-        
 		if (getDenominator() == 1){
 			return "" + getNumerator();
 		} else {
 			return "" + getNumerator() + '/' + getDenominator();
 		}
-		
     }
 
     public int getNumerator() {
@@ -54,7 +58,10 @@ public class Fraction {
         if (getNumerator() != fraction.getNumerator()) return false;
 
         return true;
+        //interesting?
     }
+
+
 
     @Override
     public int hashCode() {
@@ -64,27 +71,23 @@ public class Fraction {
     }
 
     public Fraction multiply(Fraction other) {
-
         int num = this.getNumerator() * other.getNumerator();
         int denom = this.getDenominator() * other.getDenominator();
         return new Fraction(num, denom);
-		
     }
 	
-	//----------------------------------------------------------------------------
+	//-------------------------------------Extended--------------------------------------------
+
 	
 	public Fraction divide(Fraction other) {
-		
 		int num = this.getNumerator() * other.getDenominator();
 		int denom = this.getDenominator() * other.getNumerator();
 		return new Fraction(num, denom);
-		
 	}
 	
 	public Fraction add(Fraction other){
 	
-		//can also works with just the code in else clause 
-		
+		//can also works with just the code in else clause
 		if (this.getDenominator() == other.getDenominator()) {
 			int num = this.getNumerator() + other.getNumerator();
 			int denom = this.getDenominator();
@@ -94,13 +97,11 @@ public class Fraction {
 			int denom = this.getDenominator()*other.getDenominator();
 			return new Fraction(num, denom);
 		}
-		
 	}
 	
 	public Fraction subtract(Fraction other) {
 	
-		//can also works with just the code in else clause 
-		
+		//can also works with just the code in else clause
 		if (this.getDenominator() == other.getDenominator()) {
 			int num = this.getNumerator() - other.getNumerator();
 			int denom = this.getDenominator();
@@ -110,27 +111,21 @@ public class Fraction {
 			int denom = this.getDenominator()*other.getDenominator();
 			return new Fraction(num, denom);
 		}
-		
 	}
 	
 	public Fraction negate() {
-	
 		int num = (this.getNumerator() * -1);
 		int denom = this.getDenominator();
 		return new Fraction (num,denom);
-		
 	}
 	
 	public Fraction absValue() {
-	
 		int num = Math.abs(this.getNumerator());
 		int denom = Math.abs(this.getDenominator());
 		return new Fraction(num, denom);
-		
 	}
-	
 
-	
+
 	//-----------------------------------------------------------------------------
 	
     private int myGcd(int a, int b) {
