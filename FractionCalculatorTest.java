@@ -36,6 +36,10 @@ public class FractionCalculatorTest {
 		test(testCalculator, "-", new Fraction(0, 1), 0);
 		//result of stored operator and fraction
 		test(testCalculator, "2/5", new Fraction(0, 1), 0);
+		//new fraction and operator
+		test(testCalculator, "4/5 *", new Fraction(0, 1),0);
+		//should print error message and reset
+		test(testCalculator, "+", new Fraction(0, 1), 0);
 
 
 	}
