@@ -102,6 +102,7 @@ public class FractionCalculator {
 	// simple method to check if first character in string is number or minus sign
 	public boolean checkNumber(String input) {
 		if ((Character.isDigit(input.charAt(0)) || input.charAt(0) == '-')){
+			
 			return true;
 		}
 		return false;
@@ -193,7 +194,11 @@ public class FractionCalculator {
 	*/
 
 	//checks for EOL characters // to be developed
-	public boolean checkError(String input) {
+	public boolean eol(String input) {
+		if (input.equals("") ) {
+			System.out.println("Goodbye");
+			return true;
+		}
 		return false;
 	}
 
@@ -223,9 +228,13 @@ public class FractionCalculator {
 		while(!exit) {
 			Fraction fraction = new Fraction(0, 1);
 			String userInput = System.console().readLine();
-			fraction = evaluate(fraction, userInput);
-			System.out.println("Sum = "+fraction);
-			System.out.println("");
+			if (eol(userInput)){
+				exit = true;
+			} else {
+				fraction = evaluate(fraction, userInput);
+				System.out.println("Sum = " + fraction);
+				System.out.println("");
+			}
 		}
 		System.out.println("Thank you for using my Fraction Calculator");
 	}
