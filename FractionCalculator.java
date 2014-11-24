@@ -239,7 +239,6 @@ public class FractionCalculator {
 		System.out.println("");
 		System.out.println("Fractions can be entered as 2 numbers separated by a /(slash)");
 		System.out.println("Operators take conventional form: +(add), -(minus), *(multiply) and /(divide)");
-		System.out.println("Operators take conventional form: +(add), -(minus), *(multiply) and /(divide)");
 		System.out.println("Enter A, a or abs for the fraction's absolute value");
 		System.out.println("Enter N, n, or neg to negate the fraction");
 		System.out.println ("Enter C, c or clear to reset the calculator");
